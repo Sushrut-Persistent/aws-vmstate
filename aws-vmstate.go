@@ -127,16 +127,16 @@ func main() {
 
 				for _, instanceStatus := range output.InstanceStatuses {
 					fmt.Println("+++++++++++++++++++++++++++++++++++++++++")
-					fmt.Println("status check loop\n")
+					fmt.Println("status check loop")
 					fmt.Println(*instanceStatus.InstanceId, instanceStatus.InstanceState.Name)
 					for key, value := range instanceIds {
 						if *instanceStatus.InstanceId == value {
 							fmt.Println("instance is found in config file")
 							fmt.Printf(" %v : %v \n", key, value)
 							if instanceStatus.InstanceState.Name == "running" {
-								fmt.Println("instance is running\n")
+								fmt.Println("instance is running")
 							} else {
-								fmt.Println("instance is not running\n")
+								fmt.Println("instance is not running")
 								StartInstancesCmd(client, []string{*instanceStatus.InstanceId})
 							}
 						}
